@@ -66,7 +66,7 @@ main(int argc, char *argv[])
      * The SOCK_STREAM specifies the communication type. In this case, the communication type was set to STREAM therefore,
      * a reliable connection is first initiated before data is transfered.
      * 
-     * Finally the 0 here sets the protocol and in this case, 0 means that the system should choose the defauly communication protocole for
+     * Finally the 0 here sets the protocol and in this case, 0 means that the system should choose the default communication protocole for
      * the specified address family and socket type.
      * 
      * This function should return either the value of the socket created or a -1 in case of an error

@@ -1,0 +1,29 @@
+There are two types of communication types (or connection tyoes):
+
+Connection oriented communication: This is what is refered to as STREAM based communication. In this communication, we would first establish a proper
+connection between the two parties, then transmit data. This is good when we can afford a lag but cannot afford data loss. It is reliable and douplex.
+Additionally, the data are transmitted continiously like a pipe. An example could be downloading a file from a server. Ex: TCP
+
+Connection-less communication: This is what is refered to as DATAGRAM based communication. In this communcation, we transmit in small packets regardless
+of whether a proper communication has been established or not. This is good when we can afford data loss but no lag. This could be when we are straming,
+EX: UDP
+
+Now to have a communication in the first place, we will need to make sure that we create the infrastructure for it. The way this infrastructure works is
+that we create a master socket (also refered to as a connection socket) which will be responsible for monitoring the server and accepting new clients. Once
+a client attemtps to connect to the sever, they send the connection socket a connect request, and if the master accepts, it will respons with the creation of 
+a client handler (also refered to as a data socket or a file descriptor or communication file descriptor) which will be responsible for communication and handling
+the client. The accept is done only for connection oriented communcation.
+
+To sum up, the steps are:
+1. Remove the connection socket if an old one was There
+2. Create the socket we want (this is the master, connection, socket)
+3. Specify the name of the socket
+4. Bind the socket to the system
+5. listen for clients
+6. Accept clients, once a client is accepted, create a data socket (accepting is a blocking function for the server, while the connect request is a blocking function for the client)
+7. read data from the client (reading is a blocking function)
+8. write the results to the client (the receive function that is invoked on the client side is blocking for the client while its recieving data)
+9. close the data socket
+10. close the connection socket
+11. unbind the socket from the system
+12. exit
