@@ -1,7 +1,7 @@
 /**
  * @file message_queues.c
  * @author Ziad Alwareh
- * @brief This file is in order to know how to use message queues as an IPC technique
+ * @brief This is the explanation of the API functions used in this lecture
  * @version 0.1
  * @date 2024-01-10
  * 
@@ -39,7 +39,7 @@ mqd_t msgq;
  * 2. O_WRONLY: write only (for sending messages)
  * 3. O_RDWR: for both sending and receiving (read and write)
  * 4. O_CREAT: The queue is created if it does not exist
- * 5. E_EXCL: used with the O_CREAT. This will trigger when the mq_open fails. This happens when we try to create an existing mq.
+ * 5. E_EXCL: used with the O_CREAT. This will trigger when the mq_open fails. This happens when we try to create an existing mq. If this flag is set while we try to create, failing to create will result in an error
  * 6. O_NONBLOCK: will not block a process if it was unable to access the queue.
  * @return mqd_t which is the file descriptor of the mq. if it returned -1, then an error occured
  */
@@ -54,7 +54,7 @@ mqd_t mq_open(const char *name, int oflag);
  * 2. O_WRONLY: write only (for sending messages)
  * 3. O_RDWR: for both sending and receiving (read and write)
  *mq_a 4. O_CREAT: The queue is created if it does not exist
- * 5. E_EXCL: used with the O_CREAT. This will trigger when the mq_open fails. This happens when we try to create an existing mq.
+ * 5. E_EXCL: used with the O_CREAT. This will trigger when the mq_open fails. This happens when we try to create an existing mq. If this flag is set while we try to create, failing to create will result in an error
  * 6. O_NONBLOCK: will not block a process if it was unable to access the queue.
  * @param mode these are permissions set by the owning process. This is usually set to 0660
  * @param attr specifies various attributes of the mq
